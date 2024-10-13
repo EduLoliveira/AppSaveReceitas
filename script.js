@@ -1,4 +1,3 @@
-
 const headerButton = document.querySelector("#buttonHeader");
 const containerHeader = document.querySelector(".header_home");
 const iconIndex = document.querySelector(".header_home--link");
