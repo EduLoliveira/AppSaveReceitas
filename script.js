@@ -121,7 +121,7 @@ function exibeDataInformation() {
                         </header>
                         <section class="section_receitas--open">
                             <div class="section_receitas--title">
-                                <span>${selectedItem.title}</span>
+                                <p>${selectedItem.title}</p>
                             </div>
                             <div class="section_receitas--edit">
                                 <button class="edit_button--open" onclick="editTask(${index})">Edit</button>
