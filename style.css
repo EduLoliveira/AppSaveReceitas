@@ -1,4 +1,3 @@
-
 :root {
     --cinza : #D3D3D3 ;
     --cinzaBackground: rgb(211,211,211, 0.25);
@@ -157,6 +156,14 @@ body {
     left: 0%;
 }
 
+
+.header_home .div_buttonHeader li:hover::after {
+    transition: width .2s ease, left .2s ease-out;
+    width: 0%;
+    left: 0%;
+}
+
+
 /* Estilizando os container de "Tasks" */
 .container_Task {
     display: flex;
@@ -206,24 +213,26 @@ body {
 
 /* Estilos para o FORM */
 
+
 .sidebar {
-    height: 80%;
+    height: 100vh;
     width: 0;
     position: fixed;
-    top: 110px;
+    top: 0;
     right: 0;
-    background-color: #111;
+    background-color: var(--branco);
     overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    border-radius: 55px 55px 0 0px;
+    transition: .3s;
+}
+.sidebar header{
+    border-bottom: 2px solid var(--preto);
 }
 
 .sidebar a {
     padding: 10px 15px;
     text-decoration: none;
     font-size: 25px;
-    color: white;
+    color: var(--branco);
     display: block;
     transition: 0.3s;
 }
@@ -232,3 +241,191 @@ body {
     background-color: var(--cinzaBackgroundContainerTasks);
 }
 
+.sidebar header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: var(--branco);
+    min-height: 100px;
+}
+
+.sidebar header a{
+    padding: 2% 2%;
+    color: var(--preto);
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+.sidebar svg{
+    padding: 2% 0;
+    width: 26px;
+    height: auto;
+    margin-top: 40%;
+    background-color: var(--branco);
+}
+
+.home--link span{
+    font-size: 18px;
+}
+
+.sidebar div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sidebar input::placeholder{
+    color: var(--preto);
+    font-size: 13px;
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* title of "inpKey" */
+.sidebar div .inpTitle{ 
+    width: 80%; 
+    font-size: 24px;
+    margin-top: 24%;
+    border-radius: 8px;
+    border: 1px solid var(--preto);
+    padding: 2% 3%;
+}
+
+.sidebar div .inpValue {
+    height: 192px;
+    width: 270px;
+    margin: 3% 0 10%;
+    border-radius: 5px 20px 5px 20px;
+}
+
+.sidebar div .inptTitle--value {
+    margin-left: 5%;
+    margin-bottom: 2%;
+    margin-top: 25%;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: 0.9px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+.sidebar div #btnInsert {
+    margin-top: 20%;
+    width: 85%;
+    padding: 5% 4%;
+    border-radius: 8px;
+    border: 1px solid var(--cinzaEscuro);
+    background: var(--preto);
+    color: var(--branco);
+    font-weight: bold;
+    font-size: 16px;
+    transition: .3s;
+}
+
+
+.sidebar div #btnInsert:hover {
+
+    border: 1px solid var(--preto);
+    background: var(--cinza);
+    color: var(--preto);
+    font-weight: bold;
+    font-size: 16px;
+
+}
+
+
+
+/* /**\ Manipulando pagina de receitas *vizualiando por completo*  /*\ /*\      */
+
+.taskListAll {
+    position: absolute;
+    top: -200px;
+    transition: .2s ease-out;
+}
+
+.taskListAll.active{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    background-color: var(--branco);
+}
+
+.taskListAll header{
+    border-bottom: 2px solid var(--preto);
+}
+.taskListAll header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: var(--branco);
+    min-height: 100px;
+}
+
+.taskListAll header a{
+    padding: 2% 2%;
+    color: var(--preto);
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.taskListAll svg{
+    padding: 2% 0;
+    width: 26px;
+    height: auto;
+    margin-top: 10%;
+    margin-left: 5%;
+}
+
+#taskListAll .section_receitas--open  {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "titleTask editTask";
+    margin: 4% 4%;
+    padding: 6% 3%;
+}
+
+#taskListAll .section_receitas--open .section_receitas--title {
+    grid-area: titleTask;
+    margin-right: 5%;
+    margin-top: 3%;
+}
+
+#taskListAll .section_receitas--open .section_receitas--edit {
+    grid-area: editTask;
+}
+
+/* title */
+#taskListAll .section_receitas--open div span { 
+    font-size: 18px;
+    font-weight: bold;
+    text-align: justify;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+} 
+
+/* button */
+#taskListAll .section_receitas--open div .edit_button--open{
+    width: 100%;
+    letter-spacing: 0.4px;
+    background-color: var(--azulEscuroButtonEdit);
+    margin-right: -25%;
+    height: 40px;
+    color: var(--branco);
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 1px solid var(--branco);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
+}
+
+/* text Receita/task */
+.task_text--open {
+    font-size: 16px;
+    letter-spacing: 0.4px;
+    line-height: 1.1;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
+}
