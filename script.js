@@ -47,17 +47,21 @@ function verificacaoPrompt() {
 const sendValues = document.querySelector("#btnInsert"); 
 sendValues.addEventListener('click', ()=>{
     const title = taskTitle.value;
-    const value = taskInput.value;
+    const value = taskInput.value.split(/\n\s*\n/);
+    const valueFormat = value.map(prgh => {
+        return prgh.replace(/\n/g, '<br>'); // Substitui quebra de linha simples por <br>
+    }).join('<br><br>'); // Formata com quebra dupla entre parágrafos
+    
     if (verificacaoPrompt() === true) {
         tasks.push({
             title: title,
-            text: value,
-    });
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    exibeDataInformation()
-    }
-    document.getElementById("inpKey").value = "";
-    document.getElementById("inpValue").value = "";
+            text: valueFormat,
+        });
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        exibeDataInformation(); // Exibe a informação atualizada
+            document.getElementById("inpKey").value = "";
+            document.getElementById("inpValue").value = "";
+   }
 });
 
 function removendoTask(index) {
