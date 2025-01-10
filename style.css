@@ -163,6 +163,51 @@ body {
     left: 0%;
 }
 
+.div_headerSearch {
+    margin-top: 0.4rem;
+    width: 95%;
+    border-radius: 1rem;
+    text-decoration: double;
+}
+
+.div_headerSearch.search {
+    color:  var(--preto);
+    font-weight: bold;
+    padding: 0.8rem;
+    border: 1px solid var(--preto);
+    background-color: var(--cinzaBackgroundContainerTasks);
+    transition: all 0.3s ease-out;
+}
+
+.div_headerSearch.search:focus {
+    text-decoration: double;
+    background-color: var(--preto);
+    border: 1px solid var(--cinzaBackground);
+    border-bottom-color: var(--cinza);
+    color:  var(--cinza);
+}
+
+
+@media screen and (min-width: 370px) {
+    .div_headerSearch {
+        width: 96%;
+    }
+}
+
+@media screen and (min-width: 425px) {
+
+    .div_headerSearch {
+        margin-left: 0.05rem;
+    }
+}
+
+
+@media screen and (min-width: 678px) {
+    
+    .div_headerSearch {
+        margin-left: 0.5rem;
+    }
+}
 
 /* Estilizando os container de "Tasks" */
 .container_Task {

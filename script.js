@@ -26,8 +26,6 @@ headerButton.addEventListener('click', () => {
 }, 20000);
 
 
-
-
 function verificacaoPrompt() {
     const taskMain = taskTitle.value.trim();
     const taskText = taskInput.value.trim();
@@ -65,7 +63,7 @@ sendValues.addEventListener('click', ()=>{
 });
 
 function removendoTask(index) {
-    const result = prompt('voce tem certeza, excluir?\n\nSe não desejar apagar escreva "N", não use ascentos para responder');
+    const result = prompt('voce tem certeza, excluir?\n\nSe não desejar apagar escreva "n", não use ascentos para responder');
     result.toLowerCase();
     if(result !== 'n') {
         tasks.splice(index, 1);
@@ -85,14 +83,23 @@ function editTask(index) {
         exibeDataInformation();
     }
 }
+const searchInput = document.getElementById("searchInput");
 
-function exibeDataInformation() { 
+function filterTasks() {
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    const filteredTasks = tasks.filter(task =>
+        task.title.toLowerCase().includes(searchTerm)
+    );
+    renderTasks(filteredTasks);
+}
+
+function renderTasks(taskArray) {
     taskList.innerHTML = "";
 
-    tasks.forEach((task, index) => {
+    taskArray.forEach((task, index) => {
         const div = document.createElement("div");
         div.classList.add("container_Task");
-        div.setAttribute('data-index', index);  
+        div.setAttribute('data-index', index);
         div.innerHTML = `
             <span>${task.title}</span>
             <hr>
@@ -100,19 +107,17 @@ function exibeDataInformation() {
             <button class="delet-button" onclick="removendoTask(${index})">Delete</button>`;
         taskList.appendChild(div);
 
-        div.addEventListener('click', function(event) {
-            const el = event.target;  // Elemento que foi clicado
-            
-            if (el.tagName === 'DIV') {  // Verifica se o elemento clicado é uma <DIV>
-                const index = el.getAttribute('data-index');  // Pega o índice do data-index
-                
-                // Busca o item do localStorage pelo índice 
-                const selectedItem = tasks[index];  
+        div.addEventListener('click', function (event) {
+            const el = event.target;
 
-                if (selectedItem) {  // Se existir um item com esse índice
+            if (el.tagName === 'DIV') {
+                const index = el.getAttribute('data-index');
+                const selectedItem = tasks[index];
+
+                if (selectedItem) {
                     const listingReceita = document.getElementById('taskListAll');
-                    listingReceita.innerHTML = ""; 
-                    
+                    listingReceita.innerHTML = "";
+
                     const div = document.createElement("div");
                     div.innerHTML = `
                         <header>
@@ -138,9 +143,15 @@ function exibeDataInformation() {
                     listingReceita.classList.add('active');
                 }
             }
-        }); 
-    });   
-};
+        });
+    });
+}
 
+searchInput.addEventListener('input', filterTasks);
+
+// Chama o render inicial com todas as tarefas
+function exibeDataInformation() {
+    renderTasks(tasks);
+}
 
 exibeDataInformation();
