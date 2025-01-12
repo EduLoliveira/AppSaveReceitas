@@ -138,7 +138,7 @@ function renderTasks(taskArray) {
                         </section>
                         <br>
                         <br>
-                        <span class="task_text--open">${selectedItem.text}</span>`;
+                        <section class="container_task"><span class="task_text--open">${selectedItem.text}</span></section>`;
                     listingReceita.appendChild(div);
                     listingReceita.classList.add('active');
                 }
