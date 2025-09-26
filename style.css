@@ -19,7 +19,8 @@
 }
 
 body { 
-    background-color: white;
+    background-color: var(--branco);
+    color: var(--preto);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.6;
 }
@@ -40,6 +41,7 @@ body {
     letter-spacing: 1.2px;
     text-transform: uppercase;
     padding-bottom: 1.4rem;
+    color: var(--preto);
 }
 
 .div_header p {
@@ -50,6 +52,7 @@ body {
     font-weight: 500;
     margin: 1rem 0.5rem;
     text-transform: uppercase;
+    color: var(--preto);
 }
 
 /* Estrutura centralizando img */
@@ -132,7 +135,7 @@ body {
 .header_home svg {
     width: 28px;
     height: 28px;
-    color: white;
+    color: var(--branco);
 }
 
 /* Conteudo do header HREF(BTN-Tasks) */
@@ -148,6 +151,7 @@ body {
     font-size: clamp(1rem, 3vw, 1.2rem);
     font-weight: bold;
     text-decoration: none;
+    color: var(--preto);
 }
 
 .header_home .div_buttonHeader li::before {
@@ -184,10 +188,10 @@ body {
 }
 
 .div_headerSearch.search:focus {
-    background-color: var(--preto);
-    border: 1px solid var(--cinzaBackground);
+    background-color: var(--branco);
+    border: 1px solid var(--preto);
     border-bottom-color: var(--cinza);
-    color: var(--cinza);
+    color: var(--preto);
     outline: none;
 }
 
@@ -210,6 +214,7 @@ body {
     font-size: clamp(1rem, 3vw, 1.2rem);
     font-weight: 600;
     flex: 1;
+    color: var(--preto);
 }
 
 /* estilos dos botoes "edit" e "delete" */
@@ -282,6 +287,7 @@ body {
 .sidebar svg {
     width: 24px;
     height: 24px;
+    color: var(--preto);
 }
 
 .sidebar div {
@@ -298,6 +304,8 @@ body {
     border: 1px solid var(--preto);
     border-radius: 8px;
     font-size: 1rem;
+    background-color: var(--branco);
+    color: var(--preto);
 }
 
 .sidebar input::placeholder {
@@ -322,6 +330,7 @@ body {
     font-weight: bold;
     font-size: 1.1rem;
     align-self: flex-start;
+    color: var(--preto);
 }
 
 .sidebar div #btnInsert {
@@ -378,12 +387,14 @@ body {
     padding: 1rem;
     border: 1px solid var(--cinza);
     border-radius: 8px;
+    background-color: var(--branco);
 }
 
 #taskListAll .section_receitas--open div p {
     font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
+    color: var(--preto);
 }
 
 #taskListAll .section_receitas--open div .edit_button--open {
@@ -401,6 +412,7 @@ body {
 .task_text--open {
     font-size: 1rem;
     line-height: 1.4;
+    color: var(--preto);
 }
 
 /* Media Queries para responsividade */
@@ -484,23 +496,35 @@ body {
     }
 }
 
-/* Modo escuro opcional */
+/* REMOVENDO o modo escuro para garantir fundo branco */
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #1a1a1a;
-        color: var(--branco);
+        background-color: var(--branco) !important;
+        color: var(--preto) !important;
     }
     
     .header_home,
     .sidebar,
     .taskListAll {
-        background-color: #2d2d2d;
-        color: var(--branco);
+        background-color: var(--branco) !important;
+        color: var(--preto) !important;
     }
     
     .sidebar input {
-        background-color: #3d3d3d;
-        color: var(--branco);
-        border-color: var(--cinzaEscuro);
+        background-color: var(--branco) !important;
+        color: var(--preto) !important;
+        border-color: var(--preto) !important;
+    }
+    
+    /* Garantindo que todos os textos sejam pretos */
+    .div_header h1,
+    .div_header p,
+    .header_home .div_buttonHeader li,
+    .container_Task span,
+    .sidebar a,
+    .sidebar div .inptTitle--value,
+    #taskListAll .section_receitas--open div p,
+    .task_text--open {
+        color: var(--preto) !important;
     }
 }
